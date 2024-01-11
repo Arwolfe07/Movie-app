@@ -5,9 +5,11 @@ import { auth } from '../../utils/firebase';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from '../../store/userSlice';
+import { toggleGPTSearch } from '../../store/gptSearchSlice';
 
 const Navbar = () => {
   const user = useSelector(store => store.user);
+  const { showGPTSearch } = useSelector(store => store.gpt);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -19,6 +21,10 @@ const Navbar = () => {
         navigate('/error')
       })
   };
+
+  const gptSearchHandler = () => {
+    dispatch(toggleGPTSearch());
+  }
 
   // Call this api once
   useEffect(() => {
@@ -39,16 +45,20 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className='fixed text-white z-30 w-screen max-w-screen gradient-overlay-header py-6 px-24 bg-opacity-40 flex justify-between'>
-    <p className='z-30 relative text-4xl font-extrabold tracking-tighter cursor-pointer'><span className='text-red-700'>Watch</span>Monkey</p>
-    {
-      user !== null &&
-      <div className='flex z-30'>
-        <img src={useIcon} className='w-10 h-10 mx-4' alt='user' />
-        <button className='bg-red-600 px-4 rounded-lg font-semibold' onClick={signoutHandler}>Sign Out</button>
-      </div>
-    }
-  </div>
+    <div className='fixed text-white z-30 w-screen max-w-screen gradient-overlay-header py-2 sm:py-6 xs:px-2 sm:px-10 lg:px-24 bg-opacity-40 flex sm:justify-between items-center sm:flex-row flex-col justify-center'>
+      <p className='z-30 relative text-3xl sm:text-4xl font-extrabold tracking-tighter cursor-pointer'><span className='text-red-700'>Watch</span>Monkey</p>
+      {
+        user !== null &&
+        <div className='mt-2 sm:mt-0 w-full sm:w-fit flex justify-between sm:justify-items-none z-30 items-center px-4 sm:px-0'>
+          <button className='bg-blue-600 text-sm py-2 px-2 tracking-tighter sm:px-4 sm:tracking-normal rounded-lg font-semibold hover:bg-blue-500 duration-150' onClick={gptSearchHandler}>{showGPTSearch ? "Home" : "GPT Search"}</button>
+          <div className='flex items-center'>
+
+            <img src={useIcon} className='sm:w-10 sm:h-10 w-6 h-6 mx-1 sm:mx-4' alt='user' />
+            <button className='bg-red-600 text-sm py-2 px-2 tracking-tighter sm:tracking-normal sm:px-4 rounded-lg font-semibold hover:bg-red-500 duration-150' onClick={signoutHandler}>Sign Out</button>
+          </div>
+        </div>
+      }
+    </div>
   )
 };
 
