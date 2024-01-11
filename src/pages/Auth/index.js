@@ -62,7 +62,7 @@ const Auth = () => {
         <img src={bgAuth} alt='bgImg' className='h-screen w-screen bg-cover' />
       </div>
       <form className='absolute xl:w-1/3 sm:w-1/2 flex flex-col sm:p-12 p-4 bg-black bg-opacity-90 my-36 mx-auto right-0 left-0 border-2 rounded-lg border-gray-500'>
-        <h1 className='font-semibold text-white text-4xl mb-2'>{isSignUp ? "Sign Up" : "Sign In"}</h1>
+        <h1 className='font-semibold text-white text-2xl md:text-4xl mb-2'>{isSignUp ? "Sign Up" : "Sign In"}</h1>
         {isSignUp &&
           <input className='bg-gray-700 px-4 py-2 rounded-lg my-2 text-white' type="text" placeholder='Name' ref={name} />
         }
