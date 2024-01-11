@@ -7,9 +7,7 @@ const VideoBackground = ({ movieId }) => {
     useAddTrailer(movieId);
 
     return (
-        
-
-        <iframe className='w-screen aspect-video' src={`https://www.youtube.com/embed/${trailer?.key}?autoplay=1&mute=1&playlist=${trailer?.key}&loop=1&fs=1&end=120`} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+        <iframe className='w-screen aspect-video min-h-3/4' src={`https://www.youtube.com/embed/${trailer?.key}?autoplay=1&mute=1&playlist=${trailer?.key}&loop=1&fs=1&end=120`} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
       
     );
 };

@@ -4,7 +4,7 @@ const ShimmerUI = () => {
     return (
         <div className="w-full flex">
 
-            <div class="p-4 w-1/4">
+            <div class="p-4 xl:w-1/4">
                 <div class="h-full rounded-lg overflow-hidden">
                     <div class="p-6">
                         <h2 class="bg-gray-400 animate-pulse h-4 w-full mb-2"></h2>

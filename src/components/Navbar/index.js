@@ -2,9 +2,10 @@ import React, { useEffect } from 'react';
 import useIcon from '../../assets/userIcon.png';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from '../../utils/firebase';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from '../../store/userSlice';
+import { Gi3DGlasses } from 'react-icons/gi';
 import { toggleGPTSearch } from '../../store/gptSearchSlice';
 
 const Navbar = () => {
@@ -46,7 +47,10 @@ const Navbar = () => {
 
   return (
     <div className='fixed text-white z-30 w-screen max-w-screen gradient-overlay-header py-2 sm:py-6 xs:px-2 sm:px-10 lg:px-24 bg-opacity-40 flex sm:justify-between items-center sm:flex-row flex-col justify-center'>
-      <p className='z-30 relative text-3xl sm:text-4xl font-extrabold tracking-tighter cursor-pointer'><span className='text-red-700'>Watch</span>Monkey</p>
+      <Link className='flex space-x-2 z-30 items-center' to={user?'/home':'/'}>
+        <Gi3DGlasses className='text-3xl sm:text-4xl text-white'/>
+        <p className='relative text-3xl sm:text-4xl font-extrabold tracking-tighter cursor-pointer'><span className='text-red-700'>Watch</span>Monkey</p>
+      </Link>
       {
         user !== null &&
         <div className='mt-2 sm:mt-0 w-full sm:w-fit flex justify-between sm:justify-items-none z-30 items-center px-4 sm:px-0'>
